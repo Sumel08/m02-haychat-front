@@ -1,0 +1,175 @@
+$device-width: 20rem;
+
+.glass-background {
+  background: rgba(36, 28, 28, 0.52);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5rem);
+}
+
+.iphone {
+  border: 5px solid black;
+  position: relative;
+  width: 20rem;
+  height: 35rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+
+  .speaker {
+    position: absolute;
+    width: 2rem;
+    border: 1px solid lightgray;
+    top: -3;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+
+  .status-bar {
+    height: 2rem;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    padding: 0.2rem;
+    display: flex;
+    z-index: 1;
+    border-radius: calc(2rem - 5px) calc(2rem - 5px) 0 0;
+
+    .time {
+      flex: 1;
+      background-color: transparent;
+    }
+
+    .notch {
+      flex: 1;
+      width: 3rem;
+      height: 100%;
+      border-radius: 3rem;
+      background-color: black;
+    }
+
+    .status {
+      flex: 1;
+      background-color: transparent;
+    }
+  }
+
+  .screen {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .silence,
+  .volume-up,
+  .volume-down,
+  .sleep {
+    position: absolute;
+  }
+}
+
+.app-screen {
+  height: 100%;
+  position: relative;
+
+  &.imessage {
+    display: flex;
+    flex-direction: column;
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      top: 2rem;
+      z-index: 1;
+      height: 3rem;
+
+      .contact-image {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .contact-name {
+      }
+    }
+
+    .message-container {
+      flex: 1;
+      overflow: auto;
+      padding: 5rem 0.5rem 0.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .date {
+        font-size: 0.6rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .sender {
+        font-size: 0.6rem;
+        margin-left: auto;
+
+        &.inbound {
+          margin-left: unset;
+        }
+      }
+
+      .message {
+        border: 1px solid black;
+        border-radius: 1rem;
+        margin-bottom: 0.5rem;
+        max-width: 80%;
+        padding: 0.3rem;
+        word-wrap: break-word;
+        margin-left: auto;
+        background-color: var(--accent-color);
+        color: var(--accent-contrast);
+        font-size: 0.8rem;
+        line-height: normal;
+
+        .phone {
+          float: right;
+        }
+
+        &.inbound {
+          margin-left: unset;
+          background-color: #5bc236;
+
+          .phone {
+            float: left;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .new-message {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      margin-top: auto;
+
+      .new-message-input {
+        border-radius: 1rem;
+        background-color: black;
+        border: 1px solid gray;
+        width: 100%;
+        color: white;
+        padding: 0 1rem;
+        outline: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "m02-haychat-front",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

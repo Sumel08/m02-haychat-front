@@ -1,0 +1,8 @@
+<div class="conversation-container mat-elevation-z4">
+  <p class="conversation-id">
+    {{ conversationId }}
+  </p>
+
+  <app-mobile-layout [screen]="appScreen" (sendMessage)="onNewMessage($event)"></app-mobile-layout>
+
+</div>

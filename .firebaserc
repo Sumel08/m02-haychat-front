@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "haystack-dot": {
+      "hosting": {
+        "m02-haychat-front": [
+          "haystack-chat"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "haystack-dot"
+  }
+}

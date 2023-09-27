@@ -1,0 +1,9 @@
+<mat-toolbar class="d-flex align-items-center">
+  <h2>Haychat</h2>
+  <span class="ms-auto me-3">{{ (user | async)?.email }}</span>
+  <button mat-raised-button color="accent" (click)="onLogout()">Logout</button>
+</mat-toolbar>
+
+<div class="container">
+  <app-conversation [conversationId]="'6391d82a-4848-480c-aa3f-92373caf7550'"></app-conversation>
+</div>

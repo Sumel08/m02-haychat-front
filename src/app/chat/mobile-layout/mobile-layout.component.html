@@ -1,0 +1,57 @@
+<div class="iphone">
+  <span class="speaker" title="Speaker"></span>
+  <div>
+    <div class="status-bar glass-background">
+      <span class="time"> </span>
+      <span class="notch" title="Notch"></span>
+      <span class="status"></span>
+    </div>
+  </div>
+
+  <div class="screen" [ngSwitch]="screen.app">
+    <div class="app-screen imessage" *ngSwitchCase="'iMessage'">
+      <ng-container *ngIf="screen.iMessage">
+        <div class="contact glass-background">
+          <img src="/assets/img/avatar.png" alt="Contact Profile" class="contact-image" />
+          <span class="contact-name">{{ screen.iMessage.contact.name || screen.iMessage.contact.phone }}</span>
+        </div>
+        <div class="message-container scrollable-container">
+          <ng-container *ngIf="screen.iMessage.messages.length === 0">
+            <span style="margin: auto"> Sin Mensajes </span>
+          </ng-container>
+          <ng-container *ngFor="let message of screen.iMessage.messages; let i = index">
+            <ng-container
+              *ngIf="
+              i === 0 ||
+              (message.created | date: 'dd/MM/YYYY') !== (screen.iMessage.messages[i - 1].created | date: 'dd/MM/YYYY')
+            "
+            >
+            <span class="date">
+              {{ message.created | date: 'dd MMMM HH:mm' }}
+            </span>
+            </ng-container>
+            <ng-container *ngIf="i === 0 || message.displayName !== screen.iMessage.messages[i - 1].displayName">
+            <span class="sender" [ngClass]="{ inbound: message.inbound }">
+              {{ message.displayName }}
+            </span>
+            </ng-container>
+            <div class="message" [ngClass]="{ inbound: message.inbound }">
+              {{ message.message }}
+              <mat-divider class="my-1"></mat-divider>
+              <span class="phone">{{ message.phone }}</span>
+            </div>
+          </ng-container>
+          <div class="new-message">
+            <input type="text" class="new-message-input" (keyup.enter)="onSendMessage(ref)" #ref>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div *ngSwitchDefault>No Selected Screen</div>
+  </div>
+
+  <button class="silence" title="Silence Switch"></button>
+  <button class="volume-up" title="Volume Up"></button>
+  <button class="volume-down" title="Volume Down"></button>
+  <button class="sleep" title="Sleep"></button>
+</div>
